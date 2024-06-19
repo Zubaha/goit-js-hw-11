@@ -1,8 +1,39 @@
-import { searchPhoto } from './pixabay-api';
-
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
-searchPhoto(dog);
+export function addPhoto(photos) {
+  return photos
+    ?.map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => `
+      <li class="photo-card">
+      <a href='${largeImageURL}' class="big-photo">
+  <img class="photo" src="${webformatURL}" alt="${tags}" loading="lazy" />
+  <ul class="info">
+    <li class="info-item">
+      <b>Likes</b>
+      ${likes}
+    </li>
+    <li class="info-item">
+      <b>Views</b>
+${views}
+    </li>
+    <li class="info-item">
+      <b>Comments</b>
+      ${comments}
+    </li>
+    <li class="info-item">
+      <b>Downloads</b>
+      ${downloads}
+    </li>
+  </ul>
+  </a>
+</li>   
+`
+    )
+    .join('');
+}
