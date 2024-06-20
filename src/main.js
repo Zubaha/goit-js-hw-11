@@ -19,9 +19,9 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   loader.classList.remove('loader-hidden');
   const query = input.value;
-  setTimeout(() => {
-    loader.classList.add('loader-hidden');
-  }, 1000);
+  // setTimeout(() => {
+  //   loader.classList.add('loader-hidden');
+  // }, 1000);
 
   if (query.trim() === '') {
     iziToast.show({
@@ -61,4 +61,6 @@ form.addEventListener('submit', e => {
 
       console.error('Error:', error);
     });
+  loader.classList.add('loader-hidden');
+  lightbox.refresh();
 });
