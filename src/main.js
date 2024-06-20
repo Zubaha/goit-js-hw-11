@@ -15,6 +15,7 @@ const input = document.querySelector('.input-search');
 const loader = document.querySelector('.backdrop');
 const listElem = document.querySelector('.gallery');
 const form = document.querySelector('.form');
+
 form.addEventListener('submit', e => {
   e.preventDefault();
   loader.classList.remove('loader-hidden');
@@ -48,6 +49,7 @@ form.addEventListener('submit', e => {
       const markup = addPhoto(data);
       listElem.innerHTML = markup;
       lightbox.refresh();
+      loader.classList.add('loader-hidden');
     })
 
     .catch(error => {
@@ -61,6 +63,4 @@ form.addEventListener('submit', e => {
 
       console.error('Error:', error);
     });
-  loader.classList.add('loader-hidden');
-  lightbox.refresh();
 });
